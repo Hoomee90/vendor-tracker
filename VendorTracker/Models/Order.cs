@@ -1,7 +1,11 @@
 namespace VendorTracker.Models
 {
-  public class Order
-  {
-    // Business Logic goes here.
-  }
+	public class Order
+	{
+		public string Title { get; set; }
+		public Order(string title)
+		{
+			Title = title;
+		}
+	}
 }
