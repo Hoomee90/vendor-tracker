@@ -1,22 +1,30 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendorTracker.Models;
 
 namespace VendorTracker.Tests
 {
 	[TestClass]
-	public class OrderTests
+	public class OrderTests : IDisposable
 	{
+		
+		public void Dispose()
+		{
+			Order.ClearAll();
+		}
+		
 		[TestMethod]
 		public void OrderConstructor_CreateInstanceOfOrder_Order()
 		{
-			Order newOrder = new("raspberries");
+			Order newOrder = new("raspberry");
 			Assert.AreEqual(typeof(Order), newOrder.GetType());
 		}
 		
 		[TestMethod]
 		public void GetTitle_ReturnsTitle_String()
 		{
-			string title = "apples";
+			string title = "apple";
 			Order newOrder = new(title);
 			string result = newOrder.Title;
 			Assert.AreEqual(title, result);
@@ -83,6 +91,33 @@ namespace VendorTracker.Tests
 			double newPrice = 6.5;
 			newOrder.Price = newPrice;
 			Assert.AreEqual(newPrice, newOrder.Price);
+		}
+
+		[TestMethod]
+		public void GetAll_ReturnsOrders_OrderList()
+		{
+			Order newOrder1 = new("hotdog");
+			Order newOrder2 = new("taiyaki");
+			List<Order> newList = new() { newOrder1, newOrder2 };
+			List<Order> result = Order.GetAll();
+			CollectionAssert.AreEqual(newList, result);
+		}
+		
+		[TestMethod]
+		public void GetId_ReturnsIdAssignedOnInitialization_Int()
+		{
+			Order newOrder = new("rocky");
+			int result = newOrder.Id;
+			Assert.AreEqual(1, result);
+		}
+		
+		[TestMethod]
+		public void Find_ReturnCorrectOrder_Order()
+		{
+			Order newOrder1 = new("tea");
+			Order newOrder2 = new("dubious purple drink");
+			Order result = Order.Find(2);
+			Assert.AreEqual(newOrder2, result);
 		}
 	}
 }
