@@ -2,6 +2,13 @@ namespace VendorTracker.Models
 {
 	public class Vendor
 	{
-		// Business Logic goes here.
+		public string Name { get; set; }
+		public string Description { get; set; }
+		
+		public Vendor(string name, string description = "")
+		{
+			Name = name;
+			Description = description;
+		}
 	}
 }
