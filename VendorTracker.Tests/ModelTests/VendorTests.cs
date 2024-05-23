@@ -1,12 +1,20 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendorTracker.Models;
 
 namespace VendorTracker.Tests
 {
-  [TestClass]
-  public class VendorTests
-  {
-    [TestMethod]
+	[TestClass]
+	public class VendorTests : IDisposable
+	{
+		
+		public void Dispose()
+		{
+			Vendor.ClearAll();
+		}
+		
+		[TestMethod]
 		public void VendorConstructor_CreateInstanceOfVendor_Vendor()
 		{
 			Vendor newVendor = new("Betty Crocker");
@@ -48,5 +56,32 @@ namespace VendorTracker.Tests
 			newVendor.Description = newDescription;
 			Assert.AreEqual(newDescription, newVendor.Description);
 		}
-  }
+		
+		[TestMethod]
+		public void GetAll_ReturnsVendors_VendorList()
+		{
+			Vendor newVendor1 = new("Reverie");
+			Vendor newVendor2 = new("Cosmic Ice");
+			List<Vendor> newList = new() { newVendor1, newVendor2 };
+			List<Vendor> result = Vendor.GetAll();
+			CollectionAssert.AreEqual(newList, result);
+		}
+		
+		[TestMethod]
+		public void GetId_ReturnsIdAssignedOnInitialization_Int()
+		{
+			Vendor newVendor = new("Nutcracker");
+			int result = newVendor.Id;
+			Assert.AreEqual(1, result);
+		}
+		
+		[TestMethod]
+		public void Find_ReturnCorrectVendor_Vendor()
+		{
+			Vendor newVendor1 = new("Spider Lily");
+			Vendor newVendor2 = new("Love", "Being alone suits her well");
+			Vendor result = Vendor.Find(2);
+			Assert.AreEqual(newVendor2, result);
+		}
+	}
 }
