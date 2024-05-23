@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
+using VendorTracker.Models;
 
 namespace VendorTracker.Controllers
 {
 	public class OrdersController : Controller
 	{
 
-		[HttpGet("/")]
-		public ActionResult Index()
+		[HttpGet("/vendors/{id}/orders/new")]
+		public ActionResult New(int id)
 		{
-			return View();
+			Vendor selectedVendor = Vendor.Find(id);
+			return View(selectedVendor);
 		}
 		
 	}
