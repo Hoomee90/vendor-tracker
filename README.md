@@ -1,8 +1,8 @@
-# Title
+# Vendor Tracker
 
 #### By **Samantha Callie**
 
-#### Subtitle
+#### Keep Track of Vendors and Their Orders
 
 ## Technologies Used
 
@@ -15,7 +15,7 @@
 
 ## Description
 
-Description
+This site allows users to view and add to a list of Vendors, each with a name, description, and list of Orders. New Orders can be added to each Vendor, with their own title, description, price, and date.
 
 ## Setup/Installation Requirements
 
