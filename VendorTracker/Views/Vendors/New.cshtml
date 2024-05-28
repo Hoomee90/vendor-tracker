@@ -2,4 +2,17 @@
   Layout = "_Layout";
 }
 
-@* html goes here *@
+<h1>Add a new vendor</h1>
+
+<form id="vendor-form" action="/vendors" method="post">
+  <label for="name">Name</label>
+  <input id="name" name="name" type="text">
+  <label for="description">Description:</label>
+  <div class="">
+    <textarea id="description" name="description" rows="3" form="vendor-form"></textarea>
+  </div>
+  <button type="submit">Add</button>
+</form>
+
+<p><a href="/vendors">Back to vendors</a></p>
+<p><a href="/">Back home</a></p>

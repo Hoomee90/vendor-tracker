@@ -2,4 +2,23 @@
   Layout = "_Layout";
 }
 
-@* html goes here *@
+@using VendorTracker.Models;
+
+<h1>@Model.Name</h1>
+
+<h3>@Model.Description</h3>
+
+@if (Model.Orders.Count == 0)
+{
+  <p>This vendor currently has no orders</p>
+}
+else
+{
+  @foreach (Order order in Model.Orders)
+  {
+    <p>@order.Date - $@order.Price @order.Title, @order.Description</p>
+  }
+}
+
+<p><a href="/vendors/@Model.Id/orders/new">Add a new order</a></p>
+<p><a href="/vendors">Back to vendors</a></p>
