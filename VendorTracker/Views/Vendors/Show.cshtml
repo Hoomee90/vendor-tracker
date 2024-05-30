@@ -4,7 +4,7 @@
 
 @using VendorTracker.Models;
 
-<h1>@Model.Name</h1>
+<h1>Vendor: @Model.Name</h1>
 
 <h3>@Model.Description</h3>
 
@@ -14,10 +14,12 @@
 }
 else
 {
-  @foreach (Order order in Model.Orders)
-  {
-    <p>@order.Date - $@order.Price @order.Title, @order.Description</p>
-  }
+  <ul class="list-group">
+    @foreach (Order order in Model.Orders)
+    {
+      <li class="list-group-item list-group-item-secondary">@order.Date - $@order.Price @order.Title, @order.Description</li>
+    }
+  </ul>
 }
 
 <p><a href="/vendors/@Model.Id/orders/new">Add a new order</a></p>

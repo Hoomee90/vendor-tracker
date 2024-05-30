@@ -12,10 +12,12 @@
 }
 else
 {
-  @foreach (Vendor vendor in Model)
-  {
-    <h3><a href='/vendors/@vendor.Id'>@vendor.Name</a></h3>
-  }
+  <ul class="list-group">
+    @foreach (Vendor vendor in Model)
+    {
+      <a class="list-group-item list-group-item-action list-group-item-secondary" href='/vendors/@vendor.Id'>@vendor.Name</a>
+    }
+  </ul>
 }
 
 <p><a href="/vendors/new">Add a new vendor</a></p>
