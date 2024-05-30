@@ -5,17 +5,27 @@
 <h1>Add a new order to @Model.Name</h1>
 
 <form id="order-form" action="/vendors/@Model.Id/orders" method="post">
-  <label for="title">Title:</label>
-  <input id="title" name="title" type="text">
-  <label for="description">Description:</label>
-  <div class="">
-    <textarea id="description" name="description" rows="3" form="order-form"></textarea>
+  <div class="row gy-2">
+    <div class="col-auto">
+      <label for="title">Title:</label>
+      <input id="title" name="title" type="text">
+    </div>
+    <div class="col-auto">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="3" form="order-form"></textarea>
+    </div>
+    <div class="col-auto">
+      <label for="price">Price:</label>
+    <input id="price" name="price" type="number">
+    </div>
+    <div class="col-auto">
+      <label for="date">Date:</label>
+      <input id="date" name="date" type="date">
+    </div>
+    <div class="col-auto">
+      <button type="submit">Add</button>
+    </div>
   </div>
-  <label for="price">Price:</label>
-  <input id="price" name="price" type="number">
-  <label for="date">Date:</label>
-  <input id="date" name="date" type="date">
-  <button type="submit">Add</button>
 </form>
 
 <p><a href="/vendors/@Model.Id/">Back to @Model.Name details</a></p>
