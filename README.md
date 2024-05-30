@@ -27,7 +27,7 @@ This site allows users to view and add to a list of Vendors, each with a name, d
 
 ## Known Bugs
 
-* There are no known bugs at this time
+* Reloading the vendor details page after having just added a new order to it will cause a duplicate of that order to be added again.
 
 ## License
 
